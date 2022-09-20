@@ -5,35 +5,35 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        const string exit = "exit";
+        const string Exit = "exit";
+
         bool isDictionaryActive = true;
 
-        Dictionary<string, string> word = new Dictionary<string, string>();
-        word.Add("Ассимиляция", "Растворение одного народа в другом.");
-        word.Add("Валёжина", "Дерево, упавшее на землю.");
-        word.Add("Дефиниция", "Краткое определение какого-либо понятия.");
-        word.Add("Диссонанс", "Негармоническое сочетание звуков.");
+        Dictionary<string, string> words = new Dictionary<string, string>();
+        words.Add("Ассимиляция", "Растворение одного народа в другом.");
+        words.Add("Валёжина", "Дерево, упавшее на землю.");
+        words.Add("Дефиниция", "Краткое определение какого-либо понятия.");
+        words.Add("Диссонанс", "Негармоническое сочетание звуков.");
 
-        Console.WriteLine($"Добро пожаловать в словать!\nДля завершения программы, введите: {exit}\nНапишите слово, чтобы узнать его значение:");
+        Console.WriteLine($"Добро пожаловать в словать!\nДля завершения программы, введите: {Exit}\nНапишите слово, чтобы узнать его значение:");
 
         while (isDictionaryActive)
         {
             string userInputWord = Console.ReadLine();
 
-            if (word.ContainsKey(userInputWord))
+            if (words.ContainsKey(userInputWord))
             {
-                Console.WriteLine($"Определение: {word[userInputWord]}");
+                Console.WriteLine($"Определение: {words[userInputWord]}");
+            }
+            else if (userInputWord.ToLower() == Exit)
+            {
+                Console.Clear();
+                Console.WriteLine("Работа программы завершена!");
+                isDictionaryActive = false;
             }
             else
             {
                 Console.WriteLine("Нет такого слова в словаре.");
-            }
-            if (userInputWord.ToLower() == exit)
-            {
-                Console.Clear();
-                Console.WriteLine("Работа программы завершена!");
-
-                isDictionaryActive = false;
             }
         }
     }
